@@ -2,7 +2,7 @@
     "name": "ISYA301 Study App",
     "short_name": "ISYA301",
     "description": "Study app for Information Systems 3A course",
-    "start_url": "/index.html",
+    "start_url": "./index.html",
     "display": "standalone",
     "background_color": "#1976D2",
     "theme_color": "#1976D2",
