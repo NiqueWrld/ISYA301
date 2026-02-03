@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Viewer - ISYA301</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { primary: '#1976D2', 'primary-dark': '#1565C0', 'primary-light': '#42A5F5' } } }
+        }
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+        .pdf-container {
+            height: calc(100vh - 56px);
+        }
+        .toolbar {
+            backdrop-filter: blur(10px);
+            background: rgba(25, 118, 210, 0.95);
+        }
+    </style>
+</head>
+<body class="bg-gray-900">
+    <!-- Toolbar -->
+    <div class="toolbar text-white shadow-lg fixed top-0 left-0 right-0 z-50 h-14">
+        <div class="container mx-auto px-4 h-full flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <button onclick="goBack()" class="hover:bg-primary-dark p-2 rounded-full transition">
+                    <i class="fa-solid fa-arrow-left text-xl"></i>
+                </button>
+                <div class="truncate max-w-xs md:max-w-md">
+                    <h1 id="pdfTitle" class="text-lg font-bold truncate">PDF Viewer</h1>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <button onclick="openInNewTab()" class="hover:bg-primary-dark p-2 rounded-full transition" title="Open in new tab">
+                    <i class="fa-solid fa-up-right-from-square text-lg"></i>
+                </button>
+                <button onclick="downloadPDF()" class="hover:bg-primary-dark p-2 rounded-full transition" title="Download">
+                    <i class="fa-solid fa-download text-lg"></i>
+                </button>
+                <button onclick="toggleFullscreen()" class="hover:bg-primary-dark p-2 rounded-full transition" title="Fullscreen">
+                    <i class="fa-solid fa-expand text-lg" id="fullscreenIcon"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PDF Viewer -->
+    <div class="pdf-container mt-14">
+        <iframe id="pdfFrame" class="w-full h-full border-0" src=""></iframe>
+    </div>
+
+    <!-- Loading State -->
+    <div id="loading" class="fixed inset-0 bg-gray-900 flex items-center justify-center z-40 mt-14">
+        <div class="text-center text-white">
+            <i class="fa-solid fa-spinner fa-spin text-5xl mb-4 text-primary-light"></i>
+            <p class="text-lg">Loading PDF...</p>
+        </div>
+    </div>
+
+    <!-- Error State -->
+    <div id="error" class="fixed inset-0 bg-gray-900 flex items-center justify-center z-40 mt-14 hidden">
+        <div class="text-center text-white p-8">
+            <i class="fa-solid fa-file-circle-exclamation text-6xl mb-4 text-red-400"></i>
+            <h2 class="text-2xl font-bold mb-2">PDF Not Found</h2>
+            <p class="text-gray-400 mb-6">The requested PDF file could not be loaded.</p>
+            <button onclick="goBack()" class="bg-primary hover:bg-primary-dark px-6 py-3 rounded-xl transition">
+                <i class="fa-solid fa-arrow-left mr-2"></i>Go Back
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let pdfUrl = '';
+        let pdfName = '';
+
+        // Get PDF from URL parameter
+        function init() {
+            const params = new URLSearchParams(window.location.search);
+            pdfUrl = params.get('file');
+            
+            if (!pdfUrl) {
+                showError();
+                return;
+            }
+
+            // Decode the URL and extract filename
+            pdfUrl = decodeURIComponent(pdfUrl);
+            pdfName = pdfUrl.split('/').pop().replace('.pdf', '');
+            
+            document.getElementById('pdfTitle').textContent = pdfName;
+            document.title = pdfName + ' - ISYA301';
+
+            // Load the PDF
+            const iframe = document.getElementById('pdfFrame');
+            iframe.src = pdfUrl;
+            
+            iframe.onload = function() {
+                document.getElementById('loading').classList.add('hidden');
+            };
+
+            iframe.onerror = function() {
+                showError();
+            };
+
+            // Hide loading after timeout in case onload doesn't fire
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+            }, 2000);
+        }
+
+        function showError() {
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('error').classList.remove('hidden');
+        }
+
+        function goBack() {
+            if (document.referrer) {
+                window.history.back();
+            } else {
+                window.location.href = '/';
+            }
+        }
+
+        function openInNewTab() {
+            if (pdfUrl) {
+                window.open(pdfUrl, '_blank');
+            }
+        }
+
+        function downloadPDF() {
+            if (pdfUrl) {
+                const a = document.createElement('a');
+                a.href = pdfUrl;
+                a.download = pdfName + '.pdf';
+                a.click();
+            }
+        }
+
+        function toggleFullscreen() {
+            const icon = document.getElementById('fullscreenIcon');
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+                icon.classList.remove('fa-expand');
+                icon.classList.add('fa-compress');
+            } else {
+                document.exitFullscreen();
+                icon.classList.remove('fa-compress');
+                icon.classList.add('fa-expand');
+            }
+        }
+
+        document.addEventListener('fullscreenchange', () => {
+            const icon = document.getElementById('fullscreenIcon');
+            if (!document.fullscreenElement) {
+                icon.classList.remove('fa-compress');
+                icon.classList.add('fa-expand');
+            }
+        });
+
+        // Initialize
+        init();
+    </script>
+</body>
+</html>

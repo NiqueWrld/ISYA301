@@ -1,0 +1,307 @@
+INFORMATION SYSTEMS 3A
+Current Trends in System
+Development
+2025 1
+
+Contents
+• Trends in System Development Methodologies
+• Trends in Technology Infrastructure
+• Trends in Application Software Availability
+• The Web as an Application Platform
+
+Three Current Methodologies
+• There are many specific system development methodologies used in
+practice, and this chapter covers three influential ones
+• The Unified Process (UP)
+• Extreme Programming (XP)
+• Scrum
+• These methodologies all use an iterative SDLC
+• The Unified Process uses UML
+• Extreme Programming and Scrum are based on agile principles, but the
+Unified Process can also be used in an agile fashion
+• Many organizations mix and match features of each of these when
+creating their own methodology
+
+The Unified Process (UP)
+• Originally developed by Booch, Rumbaugh, and Jacobson, who
+previously developed UML at Rational Software (now part of IBM)
+• The UP is now widely recognized as a highly influential innovation
+in software development methodologies for object-oriented
+development using an adaptive approach
+• The original version of UP defined an elaborate set of activities and
+deliverables for every step of the development process
+• More recent versions are streamlined, with fewer activities and
+deliverables, simplifying the methodology
+• Much of the book’s methodology is loosely based on the Unified
+Process (in an agile form)
+
+The Unified Process
+Life Cycle
+• The Unified Process Life Cycle model includes iterations and
+phases (the SDLC in this text is very similar, but left out the UP
+phases for simplicity)
+• Each UP phase is made up of iterations. The phases are Inception,
+Elaboration, Construction, and Transition
+
+The Unified Process
+Disciplines
+• UP Disciplines – a set of functionally related activities that combine to enable
+the development process in a UP project (each like a core development
+process):
+• Business modeling
+• Requirements
+• Design
+• Implementation
+• Testing
+• Deployment
+• Configuration and change management
+• Project management
+• Environment
+
+The Unified Process
+Disciplines in Each Iteration
+
+The Unified Process
+Complete UP SDLC Model
+
+The Unified Process
+Philosophies/Practices
+• Focuses early and often on users
+• Use case driven
+• Model driven – uses UML exclusively
+• Iterative, but provides management structure by defining phases
+• Focuses on defining an architecture
+• Adaptable to needs of a specific project
+• Can be made highly agile, but originally had heavy ceremony
+
+Extreme Programming (XP)
+• One of the original agile development methodologies (perhaps a
+reaction to the original UP) from Kent Beck
+• “Extreme” often thought to be radical, but really just focuses intently on
+industry best practices and combines best practices in new ways
+• XP is based on core values
+• Communication
+• Simplicity
+• Feedback
+• Courage
+• XP also defines a set of XP practices
+
+Extreme Programming (XP)
+Core Values and Practices
+
+Extreme Programming (XP)
+Core Values
+• Communication—one of the major causes of project failure is a
+lack of open communication among the right players at the right
+time and at the right level
+• Simplicity—XP includes techniques to reinforce keeping things
+simple to make it a standard way of developing systems
+• Feedback—as with simplicity, getting frequent, meaningful
+feedback is recognized as a best practice of software
+development
+• Courage—developers always need courage to face the harsh
+choice of doing things right or throwing away bad code and
+starting over
+
+Extreme Programming (XP)
+XP Practices
+• Planning—XP planning focuses on making a rough plan quickly and then refining
+it as things become clearer. This reflects the Agile development philosophical
+dictum that change is more important than detailed plans
+• Testing—XP intensifies testing by requiring that the tests for each use case (story)
+be written first—before the solution is programmed
+• Pair Programming—XP practice in which two programmers work together on
+designing, coding, and testing software
+• Simple Designs—XP conforms to the principles of Agile Modeling. It
+accomplishes the desired result with as few classes and methods as possible and
+that doesn’t duplicate code
+
+Extreme Programming (XP)
+XP Practices (continued)
+• Refactoring the Code— refactoring is the technique of improving the
+code without changing what it does. XP programmers continually
+refactor their code to achieve a simpler design
+• Owning the Code Collectively —in XP, everyone is responsible for the
+code. Collective ownership allows anyone to modify any piece of code.
+• Continuous Integration —this practice embodies XP’s idea of “growing”
+the software. Small pieces of code—which have passed the unit
+tests—are integrated into the system daily or even more often
+• On-Site Customer —as with all adaptive approaches, XP projects
+require continual involvement of users who can make business
+decisions about functionality and scope
+
+Extreme Programming (XP)
+XP Practices (continued)
+• System Metaphor —a system metaphor should be easily understood
+and well known to the members of the development team. It can guide
+members toward a vision and help them understand the system
+• Small Releases —consistent with the entire philosophy of growing the
+software, small and frequent releases provide upgraded solutions to
+the users and keep them involved in the project
+• Forty-Hour Week — the exact number of hours a developer works isn’t
+the issue. The issue is that the project shouldn’t be a death march that
+burns out every member of the team
+• Coding Standards —developers should follow standards for coding and
+documentation
+
+XP Activities
+• Project Activities
+Release Activities
+Iteration Activities
+
+Scrum
+• Another influential agile, iterative development methodology
+based on ideas from Rugby
+• A Scrum is used to get a ball back into play after a penalty--it
+begins quickly, is a very intense effort, involves the entire team,
+and usually only lasts for a short duration
+• Scrum philosophy is the complete control a team exerts over its
+own organization and its work processes. Software is developed
+incrementally, and controls are imposed empirically—by focusing
+on things that can be accomplished.
+
+Scrum Organization
+• Product backlog – a prioritized list of user requirements used to choose
+work to be done in a Scrum project
+• Only a few of the high-priority items are worked on at a time
+• Product owner – the client stakeholder for whom the system is being
+built
+• Responsible for project backlog and priorities
+• Scrum master – the person in charge of a Scrum project—similar to a
+project manager
+• Scrum team is usually 5 to 9 people
+• Scrum team sets own goals, organizes self, makes decisions
+
+Scrum Practices
+• Sprint – a time-controlled mini-project that implements a specific
+portion of a system
+• Firm 30 day time box with specific goal or deliverable
+• The scope of that sprint is then frozen, and no one can change it—neither the
+product owner nor any other users
+• Sprint backlog defines the scope
+• Daily Scrum – a daily meeting of all members of the team to report
+progress (15 minutes max)
+• Sprint final half-day review meeting – scheduled to review and identify
+changes needed for the following sprints
+
+Scrum Development Process
+
+Trends in Technology
+Infrastructure
+• New Client Computing Devices and Applications –Small, mobile,
+connected
+• Device-top application – a computer application that is built to execute
+on a local device without requiring a client/server connection
+• Free-standing Internet application –a client/server application that is self-
+contained and doesn’t require the use of a Web browser
+• Browser-based application –a client/server application that executes
+locally within the control of a Web browser
+
+Trends in Technology
+Infrastructure
+• Internet and Telephone Communications
+• Internet, the telephone, and television are merging
+• Long-distance telephone communication and long-distance Internet
+communication have very similar requirements and capability
+• Internet backbone – the primary data routes between large, strategically
+interconnected networks and routers on the Internet
+• Last mile – the final leg that delivers connectivity from the Internet
+network to the customer
+
+Trends in Technology
+Infrastructure
+• Back-End Computing –the server computers that provide the content—
+dynamic and static—for all applications that access servers through
+the Internet
+• As more and more client computers try to access a particular application, the
+workloads on the servers becomes incredibly heavy
+• Several factors are driving the need for large back-end computing services
+• Trend toward continuous connectivity to the Internet
+• Massive amount of data stored—many applications in the world of commerce keep
+a history of all the transactions that occur
+• The consolidation of processing in central locations
+
+Data and programs are off the PC and back in
+massive data centers
+
+Trends in Application Software
+Availability
+• Software as a service (SAAS) – a software delivery model similar to
+a utility, in which the application and its associated data are
+accessed via the Internet without locally installed programs
+• Open-source software – a method of developing, delivering, and
+licensing software that makes the application source code freely
+available to any interested developer or client
+
+Owning Software vs. SAAS
+
+Open Source
+Software
+Applications
+
+The Web as an Application Platform – The
+Evolution
+
+The Web as an Application Platform
+• Web 2.0 – a loosely defined, nonstandard term used to refer to
+Web sites that permit user-generated content and user
+interaction, such as social networking sites
+• Plug-ins – a software component that adds specific capabilities to
+a larger software application
+• Widget – a type of plug-in that focuses on enhancing the user
+interface with additional capability (also called gadget)
+• Theme – a type of add-on to an application that allows the look
+and feel, such as colors and layout, to be changed
+
+Sample
+Plug-ins
+for
+WordPress
+Blog
+
+Sample
+Google Web
+Page
+Gadgets
+
+The Web as an Application Platform
+(continued)
+• Toolbar – a type of add-on usually comprised of iconic menu items
+that access the capabilities of the application or plug-ins in a
+user-friendly fashion
+• Web mini-app – a software application that provides a complete
+set of functions but that must be executed within the confines of
+another application
+• Mashup – a type of Web site that combines the functionality of
+several other Web sites through the use of predefined APIs
+• Rich Internet Applications (RIAs) –a type of Web site that provides
+active user interaction as well as delivers rich multimedia
+
+Mashup of
+Several APIs
+to Create a
+Dashboard
+Page
+
+Rich Internet
+Application
+(RIA)
+
+Rich Internet
+Application
+(RIA)
+
+Rich Internet Applications (RIAs)
+• JavaScript and Ajax Libraries
+• De facto standard for adding desktop-like computing within browsers
+• ICEFaces and JavaFX
+• Open-source framework that provides Java language APIs to build and deploy server-based
+RIAs
+• Adobe Flash Platform
+• Best known as a multimedia platform for animation and interactivity
+• Microsoft Silverlight
+• Microsoft’s Windows Communication Foundation (WCF) .NET RIA Services to support the
+development and deployment of RIAs
+• HTML5
+• New HTML specification that standardizes RIA specifications for built-in browser delivery
+

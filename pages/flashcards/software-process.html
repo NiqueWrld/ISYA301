@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Process - Flashcards & Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { primary: '#dc2626', 'primary-dark': '#b91c1c', 'primary-light': '#ef4444' } } }
+        }
+    </script>
+    <style>
+        .flip-card { perspective: 1000px; }
+        .flip-card-inner { transition: transform 0.6s; transform-style: preserve-3d; }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back { backface-visibility: hidden; }
+        .flip-card-back { transform: rotateY(180deg); }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <header class="bg-primary text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center space-x-4">
+                <a href="../software-process.html" class="hover:bg-primary-dark p-2 rounded-full transition">
+                    <i class="fa-solid fa-arrow-left text-xl"></i>
+                </a>
+                <div>
+                    <h1 class="text-lg font-bold">Software Process</h1>
+                    <p class="text-sm opacity-80">Flashcards & Quiz</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-6">
+        <div class="flex space-x-2 mb-6">
+            <button onclick="showTab('flashcards')" id="tab-flashcards" class="flex-1 py-3 px-4 rounded-xl font-semibold transition bg-primary text-white">
+                <i class="fa-solid fa-clone mr-2"></i>Flashcards
+            </button>
+            <button onclick="showTab('quiz')" id="tab-quiz" class="flex-1 py-3 px-4 rounded-xl font-semibold transition bg-white text-gray-700">
+                <i class="fa-solid fa-question-circle mr-2"></i>Quiz
+            </button>
+        </div>
+
+        <div id="flashcards-section">
+            <div class="text-center mb-4">
+                <span id="card-counter" class="text-gray-600">Card 1 of 10</span>
+            </div>
+            
+            <div class="flip-card mx-auto cursor-pointer" onclick="flipCard()" style="width: 100%; max-width: 400px; height: 300px;">
+                <div class="flip-card-inner w-full h-full">
+                    <div class="flip-card-front absolute w-full h-full bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center justify-center">
+                        <i class="fa-solid fa-lightbulb text-4xl text-yellow-500 mb-4"></i>
+                        <p id="card-question" class="text-xl text-center font-semibold text-gray-800"></p>
+                        <p class="text-sm text-gray-400 mt-4">Tap to reveal answer</p>
+                    </div>
+                    <div class="flip-card-back absolute w-full h-full bg-gradient-to-br from-primary to-primary-dark rounded-2xl shadow-lg p-6 flex flex-col items-center justify-center">
+                        <i class="fa-solid fa-check-circle text-4xl text-white mb-4"></i>
+                        <p id="card-answer" class="text-lg text-center text-white"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-center space-x-4 mt-6">
+                <button onclick="prevCard()" class="bg-white hover:bg-gray-100 text-gray-700 px-6 py-3 rounded-xl shadow transition">
+                    <i class="fa-solid fa-chevron-left mr-2"></i>Previous
+                </button>
+                <button onclick="nextCard()" class="bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-xl shadow transition">
+                    Next<i class="fa-solid fa-chevron-right ml-2"></i>
+                </button>
+            </div>
+
+            <div class="flex justify-center mt-4">
+                <button onclick="shuffleCards()" class="text-primary hover:text-primary-dark transition">
+                    <i class="fa-solid fa-shuffle mr-2"></i>Shuffle Cards
+                </button>
+            </div>
+        </div>
+
+        <div id="quiz-section" class="hidden">
+            <div id="quiz-container" class="bg-white rounded-2xl shadow-lg p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <span id="quiz-progress" class="text-gray-600">Question 1 of 10</span>
+                    <span id="quiz-score" class="text-primary font-bold">Score: 0</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2 mb-6">
+                    <div id="progress-bar" class="bg-primary h-2 rounded-full transition-all" style="width: 10%"></div>
+                </div>
+                <h3 id="quiz-question" class="text-xl font-bold text-gray-800 mb-6"></h3>
+                <div id="quiz-options" class="space-y-3"></div>
+            </div>
+
+            <div id="quiz-result" class="hidden bg-white rounded-2xl shadow-lg p-6 text-center">
+                <i class="fa-solid fa-trophy text-6xl text-yellow-500 mb-4"></i>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Quiz Complete!</h2>
+                <p id="final-score" class="text-xl text-gray-600 mb-6"></p>
+                <button onclick="restartQuiz()" class="bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-xl transition">
+                    <i class="fa-solid fa-redo mr-2"></i>Try Again
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const flashcards = [
+            { q: "What is a Software Process?", a: "A set of related activities that leads to the production of a software product." },
+            { q: "What are the 4 essential software process activities?", a: "1. Software Specification\n2. Software Design & Implementation\n3. Software Validation\n4. Software Evolution" },
+            { q: "What is a Software Process Model?", a: "A simplified representation of a software process that represents it from a particular perspective." },
+            { q: "What are the 3 main process models?", a: "1. Waterfall Model\n2. Incremental Development\n3. Reuse-oriented Software Engineering" },
+            { q: "What are the 5 phases of the Waterfall Model?", a: "1. Requirements analysis\n2. System and software design\n3. Implementation and unit testing\n4. Integration and system testing\n5. Operation and maintenance" },
+            { q: "What is the benefit of the Waterfall Model?", a: "The process is visible and documentation is produced at each phase." },
+            { q: "What is the problem with the Waterfall Model?", a: "Inflexible partitioning makes it difficult to respond to changing customer requirements." },
+            { q: "What is Incremental Development?", a: "Developing an initial implementation, exposing it to user comment, and evolving it through several versions." },
+            { q: "What are benefits of Incremental Development?", a: "Reduced cost for changes, easier customer feedback, and more rapid delivery of useful software." },
+            { q: "What is the difference between Plan-driven and Agile processes?", a: "Plan-driven: All activities planned in advance. Agile: Planning is incremental and easier to change." }
+        ];
+
+        const quizQuestions = [
+            { q: "A software process is:", options: ["A single activity", "A set of related activities", "Only coding", "Only testing"], correct: 1 },
+            { q: "Which is NOT an essential software process activity?", options: ["Specification", "Validation", "Marketing", "Evolution"], correct: 2 },
+            { q: "The Waterfall Model has how many phases?", options: ["3", "4", "5", "6"], correct: 2 },
+            { q: "In Waterfall, when should the next phase start?", options: ["Anytime", "After previous phase finishes", "Before planning", "During testing only"], correct: 1 },
+            { q: "What is a benefit of the Waterfall Model?", options: ["Flexibility", "Process visibility", "No documentation", "Rapid changes"], correct: 1 },
+            { q: "Incremental Development evolves software through:", options: ["One version", "Several versions", "No versions", "Final version only"], correct: 1 },
+            { q: "Plan-driven processes are characterized by:", options: ["Incremental planning", "All activities planned in advance", "No planning", "Random development"], correct: 1 },
+            { q: "Agile processes make it easier to:", options: ["Avoid customer contact", "Change to reflect requirements", "Skip testing", "Ignore feedback"], correct: 1 },
+            { q: "Which model is best when requirements are well-understood?", options: ["Agile", "Waterfall", "Incremental", "None"], correct: 1 },
+            { q: "Software Evolution means:", options: ["Deleting software", "Changing system for new needs", "Never updating", "Only bug fixes"], correct: 1 }
+        ];
+
+        let currentCard = 0, currentQuestion = 0, score = 0, answered = false;
+
+        function showTab(tab) {
+            document.getElementById('flashcards-section').classList.toggle('hidden', tab !== 'flashcards');
+            document.getElementById('quiz-section').classList.toggle('hidden', tab !== 'quiz');
+            document.getElementById('tab-flashcards').classList.toggle('bg-primary', tab === 'flashcards');
+            document.getElementById('tab-flashcards').classList.toggle('text-white', tab === 'flashcards');
+            document.getElementById('tab-flashcards').classList.toggle('bg-white', tab !== 'flashcards');
+            document.getElementById('tab-flashcards').classList.toggle('text-gray-700', tab !== 'flashcards');
+            document.getElementById('tab-quiz').classList.toggle('bg-primary', tab === 'quiz');
+            document.getElementById('tab-quiz').classList.toggle('text-white', tab === 'quiz');
+            document.getElementById('tab-quiz').classList.toggle('bg-white', tab !== 'quiz');
+            document.getElementById('tab-quiz').classList.toggle('text-gray-700', tab !== 'quiz');
+        }
+
+        function updateCard() {
+            document.getElementById('card-question').textContent = flashcards[currentCard].q;
+            document.getElementById('card-answer').textContent = flashcards[currentCard].a;
+            document.getElementById('card-counter').textContent = `Card ${currentCard + 1} of ${flashcards.length}`;
+            document.querySelector('.flip-card').classList.remove('flipped');
+        }
+
+        function flipCard() { document.querySelector('.flip-card').classList.toggle('flipped'); }
+        function nextCard() { currentCard = (currentCard + 1) % flashcards.length; updateCard(); }
+        function prevCard() { currentCard = (currentCard - 1 + flashcards.length) % flashcards.length; updateCard(); }
+
+        function shuffleCards() {
+            for (let i = flashcards.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [flashcards[i], flashcards[j]] = [flashcards[j], flashcards[i]];
+            }
+            currentCard = 0; updateCard();
+        }
+
+        function loadQuestion() {
+            answered = false;
+            const q = quizQuestions[currentQuestion];
+            document.getElementById('quiz-question').textContent = q.q;
+            document.getElementById('quiz-progress').textContent = `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
+            document.getElementById('progress-bar').style.width = `${((currentQuestion + 1) / quizQuestions.length) * 100}%`;
+            document.getElementById('quiz-options').innerHTML = q.options.map((opt, i) => `
+                <button onclick="selectAnswer(${i})" class="quiz-option w-full text-left p-4 rounded-xl border-2 border-gray-200 hover:border-primary transition">
+                    <span class="font-semibold mr-2">${String.fromCharCode(65 + i)}.</span>${opt}
+                </button>
+            `).join('');
+        }
+
+        function selectAnswer(index) {
+            if (answered) return;
+            answered = true;
+            const correct = quizQuestions[currentQuestion].correct;
+            document.querySelectorAll('.quiz-option').forEach((opt, i) => {
+                opt.classList.remove('hover:border-primary');
+                if (i === correct) opt.classList.add('border-green-500', 'bg-green-50');
+                else if (i === index && i !== correct) opt.classList.add('border-red-500', 'bg-red-50');
+            });
+            if (index === correct) score++;
+            document.getElementById('quiz-score').textContent = `Score: ${score}`;
+            setTimeout(() => { currentQuestion++; currentQuestion < quizQuestions.length ? loadQuestion() : showResult(); }, 1500);
+        }
+
+        function showResult() {
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('quiz-result').classList.remove('hidden');
+            document.getElementById('final-score').textContent = `You scored ${score} out of ${quizQuestions.length} (${Math.round((score / quizQuestions.length) * 100)}%)`;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0; score = 0;
+            document.getElementById('quiz-score').textContent = 'Score: 0';
+            document.getElementById('quiz-container').classList.remove('hidden');
+            document.getElementById('quiz-result').classList.add('hidden');
+            loadQuestion();
+        }
+
+        updateCard(); loadQuestion();
+    </script>
+</body>
+</html>

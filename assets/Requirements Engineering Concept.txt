@@ -1,0 +1,146 @@
+INFORMATION
+SYSTEMS 3A
+Requirements
+Engineering
+Concepts
+2025 1
+
+Contents
+1. Requirement Engineering
+3. Introduce the Concept of User Requirements
+and System Requirements
+4. Functional and Non-Functional
+Requirements
+5. Requirement engineering process.
+• Requirements Elicitation
+• Requirements specification
+• Requirements validation
+• Requirements evolution
+
+What is a Requirement
+• The software requirements are description of features and
+functionalities of the target system.
+• Requirements convey the expectations of users from the
+software product. The requirements can be obvious or hidden,
+known or unknown, expected or unexpected from the client's
+point of view.
+
+Requirement Engineering
+• Requirements engineering (RE) is the process of defining,
+documenting, and maintaining requirements in the
+engineering design process.
+• The system requirements are the descriptions of the
+system services and constraints that are generated during
+the requirements engineering process.
+
+Types of Requirements
+User requirements are defined using natural language, tables, and
+diagrams as these can be understood by all users.
+User requirements
+Should describe functional and non-functional requirements in such a
+way that they are understandable by system users who don't have
+detailed technical knowledge.
+More detailed specifications of system functions, services, and
+System requirements constraints than user requirements.
+They are intended to be a basis for designing the system.
+
+Readers of different types of
+requirements specification
+
+Functional and
+Non-functional requirements
+Functional requirements
+• In software development, functional requirements describe what a system
+should do, defining its features and functionalities.
+• Functional requirements define "what" a system does.
+Non-functional requirements
+• Non-functional requirements specify how the system should behave,
+focusing on qualities like performance, security, usability, and reliability,
+essentially defining the system's quality attributes rather than its specific
+actions.
+• Non-functional requirements define "how well" it does it.
+
+Functional Requirement Non-functional Requirement
+Defines all the services or functions required by the Defines system properties and constraints e.g
+customer that must be provided by the system. reliability, response time, and storage
+requirements.
+It describes what the software should do. It does not describe what the software will do, but
+how the software will do it.
+Functional requirements are easy to test. Nonfunctional requirements are difficult to test.
+Related to the individual system features. Related to the system as a whole.
+Failure to meet the individual functional Failure to meet a non-functional requirement may
+requirement may degrade the system. make the whole system unusable.
+
+Types of nonfunctional requirement
+
+Key tasks in requirements engineering
+• Elicitation
+• Specification
+• Validation
+• Management
+
+Requirements engineering processes
+
+Requirements elicitation
+• Requirements Elicitation is the process of finding out the
+requirements for an intended software system by
+communicating with clients, end users, system users, and others
+who have a stake in the software system development.
+
+There are various ways to discover the requirements:
+▪ Interviews are a strong medium to collect requirements. Organizations may
+conduct several types of interviews.
+▪ Surveys Organization may conduct surveys among various stakeholders by
+querying about their expectations and requirements from the upcoming
+system.
+▪ Questionnaires A document with a pre-defined set of objective questions and
+respective options is handed over to all stakeholders to answer, which are
+collected and compiled.
+Brainstorming An informal debate is held among various stakeholders and all
+their inputs are recorded for further requirements analysis.
+
+Challenges of requirements elicitation
+• Clients don’t always understand ICT and hence, find it difficult to
+express what they want the system to do
+• Developers don’t always understand implicit knowledge of the
+business domain
+• Stakeholders will have different perspectives on the software.
+• Political influence on requirements
+• Requirements change during this stage
+
+Requirements specification
+• The process of writing down the user and system requirements in a requirements
+document.
+• Approaches
+➢ Natural language specification
+➢ Structured specifications e.g. VOLERE
+➢ Uses cases
+➢ Software requirements specification (SRS)
+➢ Agile software development approaches
+
+The Software Requirements Document
+
+Users of a
+Requirement
+document
+
+Requirements validation
+• Concerned with demonstrating that the requirements define the system that the
+customer wants.
+• Requirements error costs are high so validation is very important
+• Fixing a requirements error after delivery may cost up to 100 times the cost of
+fixing an implementation error.
+• Validity
+• Consistent
+• Complete
+• Real
+• Verifiable
+
+Requirements validation techniques
+Requirements reviews Prototyping Test-case generation
+Systematic manual analysis of the Using an executable model of the Developing tests for requirements
+requirements. system to check requirements. to check testability.
+Covered in Chapter 2.
+
+Requirements evolution
+
